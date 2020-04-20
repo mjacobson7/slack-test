@@ -8,7 +8,6 @@ app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 
-app.use('/index.html', express.static(__dirname + '/index.html'))
 
 app.get('/load', (req, res) => {
   res.status(200).json('Server has loaded!')
@@ -17,6 +16,9 @@ app.get('/load', (req, res) => {
 app.post('/max-test', (req, res) => {
   console.log(req.body)
 })
+
+
+app.use('/index.html', express.static(__dirname + '/index.html'))
 
 
 app.listen(8080, () => {
