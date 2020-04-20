@@ -17,9 +17,7 @@ app.post('/max-test', (req, res) => {
   console.log(req.body)
 })
 
-
-app.use('/client', express.static(__dirname + '/client'))
-
+app.use('/index.html', express.static(__dirname + '/index.html'))
 
 app.listen(8080, () => {
   console.log('Server listening on port 8080')
