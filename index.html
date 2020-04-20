@@ -12,6 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
     <script>
         axios.get('/load').then(res => {
+            console.log(res)
             document.getElementsByTagName('p')[0].innerText = res;
         })
 
