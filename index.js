@@ -10,6 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 
 app.get('/load', (req, res) => {
+  console.log('heyo')
   res.status(200).json('Server has loaded!')
 })
 
