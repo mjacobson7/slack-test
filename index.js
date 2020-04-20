@@ -27,19 +27,22 @@ app.post('/max-test', (req, res) => {
         "notify_on_cancel": true,
         "state": "Limo",
         "elements": [
-            {
-                "type": "text",
-                "label": "Pickup Location",
-                "name": "loc_origin"
-            },
-            {
-                "type": "text",
-                "label": "Dropoff Location",
-                "name": "loc_destination"
-            }
+          {
+            "type": "text",
+            "label": "Pickup Location",
+            "name": "loc_origin"
+          },
+          {
+            "type": "text",
+            "label": "Dropoff Location",
+            "name": "loc_destination"
+          }
         ]
       }
-    })
+    }
+
+  )
+})
 
 // app.use('/index.html', express.static(__dirname + '/index.html'))
 
