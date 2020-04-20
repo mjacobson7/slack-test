@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const path = require('path')
 const app = express();
 
 app.use(bodyParser.json())
@@ -18,7 +19,11 @@ app.post('/max-test', (req, res) => {
   console.log(req.body)
 })
 
-app.use('/index.html', express.static(__dirname + '/index.html'))
+// app.use('/index.html', express.static(__dirname + '/index.html'))
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, './index.html'))
+})
 
 app.listen(8080, () => {
   console.log('Server listening on port 8080')
