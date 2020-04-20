@@ -8,6 +8,10 @@ app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 
+app.get('/load', (req, res) => {
+  res.status(200).json('Server has loaded!')
+})
+
 app.post('/max-test', (req, res) => {
   console.log(req.body)
 })
