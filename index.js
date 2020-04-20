@@ -8,6 +8,8 @@ app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 
+app.use('/index.html', express.static(__dirname + '/index.html'))
+
 app.get('/load', (req, res) => {
   res.status(200).json('Server has loaded!')
 })
