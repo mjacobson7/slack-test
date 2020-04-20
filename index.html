@@ -9,13 +9,13 @@
     <h1>Hello World!</h1>
     <p></p>
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
     <script>
-
-
-        fetch('/load').then(res => {
+        axios.get('/load').then(res => {
             document.getElementsByTagName('p')[0].innerText = res;
         })
+
+
 
     </script>
 </body>
