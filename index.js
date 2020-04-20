@@ -18,7 +18,7 @@ app.post('/max-test', (req, res) => {
 })
 
 
-app.use('/index.html', express.static(__dirname + '/index.html'))
+app.use('/index.html', express.static(__dirname + '/client'))
 
 
 app.listen(8080, () => {
