@@ -27,7 +27,7 @@ app.post('/max-test', async (req, res) => {
     const options = [];
     
     users.map(user => {
-      if (!user.deleted && !user.is_bot) {
+      if (!user.deleted && !user.is_bot && user.real_name != 'Slackbot') {
         options.push({
           text: user.real_name,
           value: user.id
@@ -42,15 +42,13 @@ app.post('/max-test', async (req, res) => {
       text: "Who would you like to recognize?",
       attachments: [
         {
-          text: "Select a user",
-          fallback: "If you could read this message, you'd be choosing something fun to do right now.",
           color: "#3AA3E3",
           attachment_type: "default",
-          callback_id: "game_selection",
+          callback_id: "user_selection",
           actions: [
             {
-              name: "games_list",
-              text: "Pick a game...",
+              name: "users_list",
+              text: "Select a user",
               type: "select",
               options: options
             }
