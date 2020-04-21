@@ -28,8 +28,7 @@ app.post('/max-test', (req, res) => {
 
 
     {
-      "text": "Would you like to play a game?",
-      "response_type": "in_channel",
+      "text": "Who would you like to recognize?",
       "attachments": [
           {
               "text": "Choose a game to play",
