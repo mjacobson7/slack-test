@@ -35,36 +35,64 @@ app.post('/max-test', async (req, res) => {
       }
     })
     
-    const optionsString = JSON.stringify(options);
     
-    console.log(optionsString)
+
+
+    const responseObj = {
+      text: "Who would you like to recognize?",
+      attachments: [
+        {
+          "text": "Select a user",
+          "fallback": "If you could read this message, you'd be choosing something fun to do right now.",
+          "color": "#3AA3E3",
+          "attachment_type": "default",
+          "callback_id": "game_selection",
+          "actions": [
+            {
+              "name": "games_list",
+              "text": "Pick a game...",
+              "type": "select",
+              "options": options
+            }
+          ]
+        }
+      ]
+    }
+
+    const jsonResponse = JSON.stringify(responseObj);
+
+    console.log(jsonResponse)
+
+    res.status(200).json(jsonResponse)
+
+
     
-    res.status(200).json(
+    // res.status(200).json(
       
       
-      {
-        "text": "Who would you like to recognize?",
-        "attachments": [
-          {
-            "text": "Select a user",
-            "fallback": "If you could read this message, you'd be choosing something fun to do right now.",
-            "color": "#3AA3E3",
-            "attachment_type": "default",
-            "callback_id": "game_selection",
-            "actions": [
-              {
-                "name": "games_list",
-                "text": "Pick a game...",
-                "type": "select",
-                "options": optionsString
-              }
-            ]
-          }
-        ]
-      }
+    //   {
+    //     "text": "Who would you like to recognize?",
+    //     "attachments": [
+    //       {
+    //         "text": "Select a user",
+    //         "fallback": "If you could read this message, you'd be choosing something fun to do right now.",
+    //         "color": "#3AA3E3",
+    //         "attachment_type": "default",
+    //         "callback_id": "game_selection",
+    //         "actions": [
+    //           {
+    //             "name": "games_list",
+    //             "text": "Pick a game...",
+    //             "type": "select",
+    //             "options": optionsString
+    //           }
+    //         ]
+    //       }
+    //     ]
+    //   }
       
       
-      )
+    //   )
       
     } catch(e) {
       console.log(e)
