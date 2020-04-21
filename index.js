@@ -23,6 +23,7 @@ app.post('/max-test', (req, res) => {
 
   axios.get('https://slack.com/api/users.list?token=' + process.env.SLACK_AUTH_TOKEN).then(response => {
     const users = response.members;
+    console.log(users)
     const options = [];
 
     users.map(user => {
