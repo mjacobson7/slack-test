@@ -14,15 +14,16 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 
 app.get('/load', (req, res) => {
-  console.log('heyo')
   res.status(200).json('Server has loaded!')
 })
 
 app.post('/max-test', async (req, res) => {
   try {
-    const payload = JSON.parse(req.body.payload)
-    console.log(payload.callback_id)
+    console.log(req.body)
+    // const payload = JSON.parse(req.body.payload)
+    // console.log(payload.callback_id)
 
+    console.log('heyo')
 
     const response = await axios.get('https://slack.com/api/users.list?token=' + process.env.SLACK_AUTH_TOKEN)
     const users = response.data.members;
