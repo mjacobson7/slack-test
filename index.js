@@ -52,7 +52,7 @@ app.post('/max-test', async (req, res) => {
               name: "games_list",
               text: "Pick a game...",
               type: "select",
-              options: JSON.stringify(options)
+              options: options
             }
           ]
         }
@@ -61,7 +61,7 @@ app.post('/max-test', async (req, res) => {
 
     const jsonResponse = JSON.stringify(responseObj);
 
-    res.status(200).json(jsonResponse)
+    res.status(200).json(responseObj)
 
 
     
