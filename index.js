@@ -20,7 +20,7 @@ app.get('/load', (req, res) => {
 
 app.post('/max-test', async (req, res) => {
   console.log(req.body)
-
+  console.log(process.env.SLACK_AUTH_TOKEN)
   const response = await axios.get('https://slack.com/api/users.list?token=' + process.env.SLACK_AUTH_TOKEN)
   const users = response.members;
   console.log(users)
