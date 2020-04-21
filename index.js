@@ -52,7 +52,7 @@ app.post('/max-test', async (req, res) => {
               name: "games_list",
               text: "Pick a game...",
               type: "select",
-              options: options
+              options: JSON.stringify(options)
             }
           ]
         }
