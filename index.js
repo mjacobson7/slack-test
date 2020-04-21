@@ -59,7 +59,7 @@ app.post('/max-test', async (req, res) => {
       ]
     }
 
-    const jsonResponse = JSON.stringify(responseObj);
+    const jsonResponse = JSON.parse(responseObj);
 
     console.log(jsonResponse)
 
