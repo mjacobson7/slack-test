@@ -21,66 +21,72 @@ app.get('/load', (req, res) => {
 app.post('/max-test', async (req, res) => {
   console.log(req.body)
   console.log(process.env.SLACK_AUTH_TOKEN)
-  const response = await axios.get('https://slack.com/api/users.list?token=' + process.env.SLACK_AUTH_TOKEN)
-  const users = response.members;
-  console.log(users)
-  const options = [];
-
-  users.map(user => {
-    if (!user.deleted && !user.is_bot) {
-      options.push({
-        text: user.real_name,
-        value: user.id
-      })
+  
+  try {
+    const response = await axios.get('https://slack.com/api/users.list?token=' + process.env.SLACK_AUTH_TOKEN)
+    const users = response.members;
+    console.log(users)
+    const options = [];
+    
+    users.map(user => {
+      if (!user.deleted && !user.is_bot) {
+        options.push({
+          text: user.real_name,
+          value: user.id
+        })
+      }
+    })
+    
+    
+    
+    
+    
+    res.status(200).json(
+      
+      
+      {
+        "text": "Who would you like to recognize?",
+        "attachments": [
+          {
+            "text": "Select a user",
+            "fallback": "If you could read this message, you'd be choosing something fun to do right now.",
+            "color": "#3AA3E3",
+            "attachment_type": "default",
+            "callback_id": "game_selection",
+            "actions": [
+              {
+                "name": "games_list",
+                "text": "Pick a game...",
+                "type": "select",
+                "options": JSON.stringify(options)
+              }
+            ]
+          }
+        ]
+      }
+      
+      
+      )
+      
+    } catch(e) {
+      console.log(e)
+      res.status(500).send(e)
     }
-  })
-
-
-
-
-
-  res.status(200).json(
-
-
-    {
-      "text": "Who would you like to recognize?",
-      "attachments": [
-        {
-          "text": "Select a user",
-          "fallback": "If you could read this message, you'd be choosing something fun to do right now.",
-          "color": "#3AA3E3",
-          "attachment_type": "default",
-          "callback_id": "game_selection",
-          "actions": [
-            {
-              "name": "games_list",
-              "text": "Pick a game...",
-              "type": "select",
-              "options": JSON.stringify(options)
-            }
-          ]
-        }
-      ]
-    }
-
-
-  )
-
-
-  // const data = {form: {
-  //   token: process.env.SLACK_AUTH_TOKEN,
-  //   channel: '#test',
-  //   text: "Hi! :wave: \n I'm your new bot."
-  // }}
-
-  // axios.post('https://slack.com/api/chat.postMessage', data).then(response => {
-  //   console.log(response);
-
-  //   res.status(200).json(response.data)
-  // })
-
-
-  // axios.get('https://slack.com/api/users.identity', data).then(res => {
+      
+      // const data = {form: {
+        //   token: process.env.SLACK_AUTH_TOKEN,
+        //   channel: '#test',
+        //   text: "Hi! :wave: \n I'm your new bot."
+        // }}
+        
+        // axios.post('https://slack.com/api/chat.postMessage', data).then(response => {
+          //   console.log(response);
+          
+          //   res.status(200).json(response.data)
+          // })
+          
+          
+          // axios.get('https://slack.com/api/users.identity', data).then(res => {
   //   console.log(res.data)
   // })
 
