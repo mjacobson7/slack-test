@@ -37,7 +37,7 @@ app.post('/max-test', async (req, res) => {
     
     const optionsString = JSON.stringify(options);
     
-    
+    console.log(optionsString)
     
     res.status(200).json(
       
