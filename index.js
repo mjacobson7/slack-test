@@ -23,44 +23,83 @@ app.post('/max-test', async (req, res) => {
     if (req.body.payload) {
       const payload = JSON.parse(req.body.payload)
       console.log(payload.callback_id)
-    }
 
-    console.log('heyo')
-
-    const response = await axios.get('https://slack.com/api/users.list?token=' + process.env.SLACK_AUTH_TOKEN)
-    const users = response.data.members;
-    const options = [];
-
-    users.map(user => {
-      if (!user.deleted && !user.is_bot && user.real_name != 'Slackbot') {
-        options.push({
-          text: user.real_name,
-          value: user.id
-        })
-      }
-    })
-
-
-    const responseObj = {
-      text: "Who would you like to recognize?",
-      attachments: [
-        {
-          color: "#3AA3E3",
-          attachment_type: "default",
-          callback_id: "user_selection",
-          actions: [
+      if(payload.callback_id == 'user_selection') {
+        const responseObj = {
+          text: "Choose a program",
+          attachments: [
             {
-              name: "users_list",
-              text: "Select a user",
-              type: "select",
-              options: options
+              color: "#3AA3E3",
+              attachment_type: "default",
+              callback_id: "user_selection",
+              actions: [
+                {
+                  name: "users_list",
+                  text: "Select a user",
+                  type: "select",
+                  options: [
+                    {
+                      text: 'Anniversary Program',
+                      value: 'ANNIVERSARY'
+                    },
+                    {
+                      text: 'Happy Birthday',
+                      value: 'BIRTHDAY'
+                    },
+                    {
+                      text: 'High Five',
+                      value: 'HF'
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
-      ]
-    }
 
-    res.status(200).json(responseObj)
+        res.status(200).json(responseObj)
+
+      }
+
+
+
+
+    } else {
+      const response = await axios.get('https://slack.com/api/users.list?token=' + process.env.SLACK_AUTH_TOKEN)
+      const users = response.data.members;
+      const options = [];
+
+      users.map(user => {
+        if (!user.deleted && !user.is_bot && user.real_name != 'Slackbot') {
+          options.push({
+            text: user.real_name,
+            value: user.id
+          })
+        }
+      })
+
+
+      const responseObj = {
+        text: "Who would you like to recognize?",
+        attachments: [
+          {
+            color: "#3AA3E3",
+            attachment_type: "default",
+            callback_id: "user_selection",
+            actions: [
+              {
+                name: "users_list",
+                text: "Select a user",
+                type: "select",
+                options: options
+              }
+            ]
+          }
+        ]
+      }
+
+      res.status(200).json(responseObj)
+    }
 
   } catch (e) {
     console.log(e)
