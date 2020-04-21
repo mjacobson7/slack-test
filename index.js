@@ -21,17 +21,77 @@ app.get('/load', (req, res) => {
 app.post('/max-test', (req, res) => {
   console.log(req.body)
 
-  const data = {form: {
-    token: process.env.SLACK_AUTH_TOKEN,
-    channel: '#test',
-    text: "Hi! :wave: \n I'm your new bot."
-  }}
 
-  axios.post('https://slack.com/api/chat.postMessage', data).then(response => {
-    console.log(response);
 
-    res.status(200).json(response.data)
-  })
+
+  res.status(200).json(
+
+
+    {
+      "text": "Would you like to play a game?",
+      "response_type": "in_channel",
+      "attachments": [
+          {
+              "text": "Choose a game to play",
+              "fallback": "If you could read this message, you'd be choosing something fun to do right now.",
+              "color": "#3AA3E3",
+              "attachment_type": "default",
+              "callback_id": "game_selection",
+              "actions": [
+                  {
+                      "name": "games_list",
+                      "text": "Pick a game...",
+                      "type": "select",
+                      "options": [
+                          {
+                              "text": "Hearts",
+                              "value": "hearts"
+                          },
+                          {
+                              "text": "Bridge",
+                              "value": "bridge"
+                          },
+                          {
+                              "text": "Checkers",
+                              "value": "checkers"
+                          },
+                          {
+                              "text": "Chess",
+                              "value": "chess"
+                          },
+                          {
+                              "text": "Poker",
+                              "value": "poker"
+                          },
+                          {
+                              "text": "Falken's Maze",
+                              "value": "maze"
+                          },
+                          {
+                              "text": "Global Thermonuclear War",
+                              "value": "war"
+                          }
+                      ]
+                  }
+              ]
+          }
+      ]
+  }
+
+
+  )
+
+  // const data = {form: {
+  //   token: process.env.SLACK_AUTH_TOKEN,
+  //   channel: '#test',
+  //   text: "Hi! :wave: \n I'm your new bot."
+  // }}
+
+  // axios.post('https://slack.com/api/chat.postMessage', data).then(response => {
+  //   console.log(response);
+
+  //   res.status(200).json(response.data)
+  // })
 
 
   // axios.get('https://slack.com/api/users.identity', data).then(res => {
