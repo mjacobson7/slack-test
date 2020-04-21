@@ -27,8 +27,10 @@ app.post('/max-test', (req, res) => {
     text: "Hi! :wave: \n I'm your new bot."
   }}
 
-  axios.post('https://slack.com/api/chat.postMessage', data).then(res => {
-    res.json();
+  axios.post('https://slack.com/api/chat.postMessage', data).then(response => {
+    console.log(response);
+
+    res.status(200).json(response.data)
   })
 
 
