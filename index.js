@@ -42,26 +42,24 @@ app.post('/max-test', async (req, res) => {
       text: "Who would you like to recognize?",
       attachments: [
         {
-          "text": "Select a user",
-          "fallback": "If you could read this message, you'd be choosing something fun to do right now.",
-          "color": "#3AA3E3",
-          "attachment_type": "default",
-          "callback_id": "game_selection",
-          "actions": [
+          text: "Select a user",
+          fallback: "If you could read this message, you'd be choosing something fun to do right now.",
+          color: "#3AA3E3",
+          attachment_type: "default",
+          callback_id: "game_selection",
+          actions: [
             {
-              "name": "games_list",
-              "text": "Pick a game...",
-              "type": "select",
-              "options": options
+              name: "games_list",
+              text: "Pick a game...",
+              type: "select",
+              options: options
             }
           ]
         }
       ]
     }
 
-    const jsonResponse = JSON.parse(responseObj);
-
-    console.log(jsonResponse)
+    const jsonResponse = JSON.stringify(responseObj);
 
     res.status(200).json(jsonResponse)
 
