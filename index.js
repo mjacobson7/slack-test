@@ -20,15 +20,17 @@ app.get('/load', (req, res) => {
 app.post('/max-test', async (req, res) => {
   try {
     console.log(req.body)
-    // const payload = JSON.parse(req.body.payload)
-    // console.log(payload.callback_id)
+    if (req.body.payload) {
+      const payload = JSON.parse(req.body.payload)
+      console.log(payload.callback_id)
+    }
 
     console.log('heyo')
 
     const response = await axios.get('https://slack.com/api/users.list?token=' + process.env.SLACK_AUTH_TOKEN)
     const users = response.data.members;
     const options = [];
-    
+
     users.map(user => {
       if (!user.deleted && !user.is_bot && user.real_name != 'Slackbot') {
         options.push({
@@ -37,8 +39,8 @@ app.post('/max-test', async (req, res) => {
         })
       }
     })
-    
-    
+
+
     const responseObj = {
       text: "Who would you like to recognize?",
       attachments: [
@@ -59,12 +61,12 @@ app.post('/max-test', async (req, res) => {
     }
 
     res.status(200).json(responseObj)
-      
-    } catch(e) {
-      console.log(e)
-      res.status(500).send(e)
-    }
-      
+
+  } catch (e) {
+    console.log(e)
+    res.status(500).send(e)
+  }
+
 })
 
 
