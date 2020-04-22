@@ -57,7 +57,7 @@ app.post('/max-test', async (req, res) => {
             },
   
             {
-              type: 'select',
+              type: 'input',
               block_id: 'title',
               label: {
                 type: 'plain_text',
