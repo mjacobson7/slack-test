@@ -31,11 +31,11 @@ app.post('/max-test', async (req, res) => {
             {
               color: "#3AA3E3",
               attachment_type: "default",
-              callback_id: "user_selection",
+              callback_id: "program_selection",
               actions: [
                 {
-                  name: "users_list",
-                  text: "Select a user",
+                  name: "program_list",
+                  text: "Select a Program",
                   type: "select",
                   options: [
                     {
