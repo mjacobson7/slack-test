@@ -36,7 +36,7 @@ app.post('/max-test', async (req, res) => {
         type: 'modal',
         title: {
           type: 'plain_text',
-          text: 'Who do you want to recognize today?',
+          text: 'Contact Front Desk',
         },
         submit: {
           type: 'plain_text',
