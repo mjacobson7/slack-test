@@ -40,7 +40,7 @@ app.post('/max-test', async (req, res) => {
         },
         submit: {
           type: 'plain_text',
-          text: 'Next',
+          text: 'Submit',
         },
         callback_id: 'frontdesk',
         blocks: [
