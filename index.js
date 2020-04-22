@@ -28,67 +28,67 @@ app.post('/max-test', async (req, res) => {
     const { trigger_id: triggerId } = req.body;
 
     res.status(200).send('');
-    (async () => {
-      // Open a modal.
-      await web.views.open({
-        trigger_id: triggerId,
-        view: {
-          type: 'modal',
-          title: {
-            type: 'plain_text',
-            text: 'Who do you want to recognize today?',
-          },
-          submit: {
-            type: 'plain_text',
-            text: 'Submit',
-          },
-          callback_id: 'frontdesk',
-          blocks: [
-            {
-              type: 'section',
-              text: {
-                type: 'plain_text',
-                text: ':wave: We will get back to you as soon as possible',
-                emoji: true,
-              },
-            },
-            {
-              type: 'divider',
-            },
-  
-            {
-              type: 'input',
-              block_id: 'title',
-              label: {
-                type: 'plain_text',
-                text: 'Title',
-                emoji: true,
-              },
-              element: {
-                type: 'plain_text_input',
-                multiline: false,
-                action_id: 'title',
-              },
-            },
-            {
-              type: 'input',
-              block_id: 'description',
-              label: {
-                type: 'plain_text',
-                text: 'Description',
-                emoji: true,
-              },
-              element: {
-                type: 'plain_text_input',
-                multiline: true,
-                action_id: 'description',
-              },
-              optional: true,
-            },
-          ],
+
+    // Open a modal.
+    await web.views.open({
+      trigger_id: triggerId,
+      view: {
+        type: 'modal',
+        title: {
+          type: 'plain_text',
+          text: 'Who do you want to recognize today?',
         },
-      });
-    })();
+        submit: {
+          type: 'plain_text',
+          text: 'Submit',
+        },
+        callback_id: 'frontdesk',
+        blocks: [
+          {
+            type: 'section',
+            text: {
+              type: 'plain_text',
+              text: ':wave: We will get back to you as soon as possible',
+              emoji: true,
+            },
+          },
+          {
+            type: 'divider',
+          },
+
+          {
+            type: 'input',
+            block_id: 'title',
+            label: {
+              type: 'plain_text',
+              text: 'Title',
+              emoji: true,
+            },
+            element: {
+              type: 'plain_text_input',
+              multiline: false,
+              action_id: 'title',
+            },
+          },
+          {
+            type: 'input',
+            block_id: 'description',
+            label: {
+              type: 'plain_text',
+              text: 'Description',
+              emoji: true,
+            },
+            element: {
+              type: 'plain_text_input',
+              multiline: true,
+              action_id: 'description',
+            },
+            optional: true,
+          },
+        ],
+      },
+    });
+
 
     // console.log(req.body)
     // if (req.body.payload) {
