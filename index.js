@@ -36,22 +36,22 @@ app.post('/max-test', async (req, res) => {
         type: 'modal',
         title: {
           type: 'plain_text',
-          text: 'Contact Front Desk',
+          text: 'Who do you want to recognize today?',
         },
         submit: {
           type: 'plain_text',
-          text: 'Submit',
+          text: 'Next',
         },
         callback_id: 'frontdesk',
         blocks: [
-          {
-            type: 'section',
-            text: {
-              type: 'plain_text',
-              text: ':wave: We will get back to you as soon as possible',
-              emoji: true,
-            },
-          },
+          // {
+          //   type: 'section',
+          //   text: {
+          //     type: 'plain_text',
+          //     text: ':wave: We will get back to you as soon as possible',
+          //     emoji: true,
+          //   },
+          // },
           {
             type: 'divider',
           },
