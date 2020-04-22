@@ -4,6 +4,9 @@ const cors = require('cors')
 const path = require('path')
 const axios = require('axios')
 require('dotenv').config()
+const { WebClient } = require('@slack/web-api');
+const token = process.env.SLACK_AUTH_TOKEN;
+const web = new WebClient(token);
 const app = express();
 
 
@@ -86,7 +89,7 @@ app.post('/max-test', async (req, res) => {
         },
       });
     })();
-    
+
     // console.log(req.body)
     // if (req.body.payload) {
     //   const payload = JSON.parse(req.body.payload)
