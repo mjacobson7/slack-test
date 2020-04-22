@@ -33,59 +33,44 @@ app.post('/max-test', async (req, res) => {
     await web.views.open({
       trigger_id: triggerId,
       view: {
-        type: 'modal',
+        type: "modal",
         title: {
-          type: 'plain_text',
-          text: 'Contact Front Desk',
+          type: "plain_text",
+          text: "Recognize",
+          emoji: true
         },
         submit: {
-          type: 'plain_text',
-          text: 'Submit',
+          type: "plain_text",
+          text: "Next",
+          emoji: true
         },
-        callback_id: 'frontdesk',
+        close: {
+          type: "plain_text",
+          text: "Cancel",
+          emoji: true
+        },
         blocks: [
           {
-            type: 'section',
+            type: "section",
             text: {
-              type: 'plain_text',
-              text: ':wave: We will get back to you as soon as possible',
-              emoji: true,
-            },
+              type: "mrkdwn",
+              text: "Who do you want to recognize today?"
+            }
           },
           {
-            type: 'divider',
-          },
-
-          {
-            type: 'input',
-            block_id: 'title',
-            label: {
-              type: 'plain_text',
-              text: 'Title',
-              emoji: true,
-            },
-            element: {
-              type: 'plain_text_input',
-              multiline: false,
-              action_id: 'title',
-            },
-          },
-          {
-            type: 'input',
-            block_id: 'description',
-            label: {
-              type: 'plain_text',
-              text: 'Description',
-              emoji: true,
-            },
-            element: {
-              type: 'plain_text_input',
-              multiline: true,
-              action_id: 'description',
-            },
-            optional: true,
-          },
-        ],
+            type: "actions",
+            elements: [
+              {
+                type: "users_select",
+                placeholder: {
+                  type: "plain_text",
+                  text: "Select a user",
+                  emoji: true
+                }
+              }
+            ]
+          }
+        ]
       },
     });
 
