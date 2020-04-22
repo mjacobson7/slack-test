@@ -36,13 +36,13 @@ app.post('/max-test', async (req, res) => {
           type: 'modal',
           title: {
             type: 'plain_text',
-            text: 'Contact Front Desk',
+            text: 'Who do you want to recognize today?',
           },
           submit: {
             type: 'plain_text',
-            text: 'Submit',
+            text: 'Next',
           },
-          callback_id: 'frontdesk',
+          callback_id: 'user',
           blocks: [
             {
               type: 'section',
@@ -57,7 +57,7 @@ app.post('/max-test', async (req, res) => {
             },
   
             {
-              type: 'input',
+              type: 'select',
               block_id: 'title',
               label: {
                 type: 'plain_text',
