@@ -82,7 +82,7 @@ app.post('/slack-recognize', async (req, res) => {
 
 app.post('/slack-user', async (req, res) => {
   try {
-    console.log('We did it!')
+    console.log(req.body)
   } catch(e) {
     console.log(e)
   }
